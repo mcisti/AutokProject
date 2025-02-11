@@ -1,6 +1,0 @@
-@autopiac_HostAddress = http://localhost:5220
-
-GET {{autopiac_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
