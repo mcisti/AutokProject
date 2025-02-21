@@ -9,10 +9,10 @@ export default function Nav() {
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a class="navbar-brand" href="#">Főoldal</a>
+      <Link class="navbar-brand" to="/">Főoldal</Link>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Autók</a>
+          <Link class="nav-link active" aria-current="page" href="#">Autók</Link>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Új hírdetés</a>
@@ -24,6 +24,7 @@ export default function Nav() {
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Pl.: Audi,Bmw" aria-label="Keresés"/>
         <button class="btn btn-outline-success" type="submit">Keres</button>
+        <Link to="/login" className="btn btn-"><i class="bi bi-person-circle"></i></Link>
       </form>
     </div>
   </div>
