@@ -14,7 +14,7 @@ export default function SinglePlayer() {
     }, [])
 
     function GetData() {
-        axios.get("https://chess.sulla.hu/chess/"+id)
+        axios.get("http://localhost:5150/api/Jarmuvek"+id)
         .then(function(response) {
             console.log(response)
             setdata(response.data);

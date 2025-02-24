@@ -13,7 +13,7 @@ export default function ListPlayers() {
   }, [])
 
   function GetData() {
-    axios.get("https://chess.sulla.hu/chess")
+    axios.get("http://localhost:5150/api/Jarmuvek")
       .then(function (response) {
         console.log(response)
         setdatabase(response.data);
