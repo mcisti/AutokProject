@@ -1,0 +1,91 @@
+[
+  {
+    "ContainingType": "Jarmuvek.Controllers.JarmuvekController",
+    "Method": "Get",
+    "RelativePath": "api/Jarmuvek",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Jarmuvek.Controllers.JarmuvekController",
+    "Method": "Post",
+    "RelativePath": "api/Jarmuvek",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "jarmuvek",
+        "Type": "autoprojekt.Models.Jarmuvek",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Jarmuvek.Controllers.JarmuvekController",
+    "Method": "DeleteById",
+    "RelativePath": "api/Jarmuvek",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Jarmuvek.Controllers.JarmuvekController",
+    "Method": "Get",
+    "RelativePath": "api/Jarmuvek/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Jarmuvek.Controllers.JarmuvekController",
+    "Method": "UpdateHouse",
+    "RelativePath": "api/Jarmuvek/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "jarmuvek",
+        "Type": "autoprojekt.Models.Jarmuvek",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

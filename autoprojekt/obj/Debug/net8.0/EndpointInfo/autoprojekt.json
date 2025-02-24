@@ -1,0 +1,230 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "autoprojekt",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Jarmuvek": {
+      "get": {
+        "tags": [
+          "Jarmuvek"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Jarmuvek"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Jarmuvek"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Jarmuvek"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Jarmuvek"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Jarmuvek"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Jarmuvek/{id}": {
+      "get": {
+        "tags": [
+          "Jarmuvek"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Jarmuvek"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Jarmuvek"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Jarmuvek"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Jarmuvek"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Jarmuvek": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hirdeto": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "marka": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipus": {
+            "type": "string",
+            "nullable": true
+          },
+          "evjarat": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "kilometer": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "szin": {
+            "type": "string",
+            "nullable": true
+          },
+          "motorTipus": {
+            "type": "string",
+            "nullable": true
+          },
+          "motorMeret": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "teljesitmeny": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "sebessegvalto": {
+            "type": "string",
+            "nullable": true
+          },
+          "ar": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "allapot": {
+            "type": "string",
+            "nullable": true
+          },
+          "felszereltseg": {
+            "type": "string",
+            "nullable": true
+          },
+          "muszakiVizsga": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "elojel": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
