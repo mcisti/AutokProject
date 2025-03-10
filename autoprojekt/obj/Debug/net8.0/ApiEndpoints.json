@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "Jarmuvek.Controllers.JarmuvekController",
+    "ContainingType": "AutoProject.Controllers.JarmuvekController",
     "Method": "Get",
     "RelativePath": "api/Jarmuvek",
     "HttpMethod": "GET",
@@ -10,7 +10,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Jarmuvek.Controllers.JarmuvekController",
+    "ContainingType": "AutoProject.Controllers.JarmuvekController",
     "Method": "Post",
     "RelativePath": "api/Jarmuvek",
     "HttpMethod": "POST",
@@ -18,8 +18,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "jarmuvek",
-        "Type": "autoprojekt.Models.Jarmuvek",
+        "Name": "addNewJarmu",
+        "Type": "AutoProject.Models.AddNewJarmu",
         "IsRequired": true
       }
     ],
@@ -36,7 +36,7 @@
     ]
   },
   {
-    "ContainingType": "Jarmuvek.Controllers.JarmuvekController",
+    "ContainingType": "AutoProject.Controllers.JarmuvekController",
     "Method": "DeleteById",
     "RelativePath": "api/Jarmuvek",
     "HttpMethod": "DELETE",
@@ -52,7 +52,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Jarmuvek.Controllers.JarmuvekController",
+    "ContainingType": "AutoProject.Controllers.JarmuvekController",
     "Method": "Get",
     "RelativePath": "api/Jarmuvek/{id}",
     "HttpMethod": "GET",
@@ -68,8 +68,8 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Jarmuvek.Controllers.JarmuvekController",
-    "Method": "UpdateHouse",
+    "ContainingType": "AutoProject.Controllers.JarmuvekController",
+    "Method": "UpdateCar",
     "RelativePath": "api/Jarmuvek/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -83,6 +83,95 @@
       {
         "Name": "jarmuvek",
         "Type": "autoprojekt.Models.Jarmuvek",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AutoProject.Controllers.KepekController",
+    "Method": "Get",
+    "RelativePath": "api/Kepek",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AutoProject.Controllers.KepekController",
+    "Method": "Post",
+    "RelativePath": "api/Kepek",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addNewKep",
+        "Type": "AutoProject.Models.AddNewKep",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "AutoProject.Controllers.KepekController",
+    "Method": "DeleteById",
+    "RelativePath": "api/Kepek",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AutoProject.Controllers.KepekController",
+    "Method": "Get",
+    "RelativePath": "api/Kepek/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AutoProject.Controllers.KepekController",
+    "Method": "UpdateImage",
+    "RelativePath": "api/Kepek/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "kepek",
+        "Type": "autoprojekt.Models.KepekVideo",
         "IsRequired": true
       }
     ],
