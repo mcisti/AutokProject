@@ -56,6 +56,7 @@ namespace autoprojekt
 
             app.UseAuthorization();
 
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.MapControllers();
 
