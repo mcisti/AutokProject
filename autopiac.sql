@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Feb 14. 11:48
+-- Létrehozás ideje: 2025. Már 13. 09:42
 -- Kiszolgáló verziója: 10.4.20-MariaDB
 -- PHP verzió: 7.3.29
 
@@ -20,22 +20,130 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `autopiac`
 --
+CREATE DATABASE IF NOT EXISTS `autopiac` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `autopiac`;
 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `felhasznalo`
+-- Tábla szerkezet ehhez a táblához `aspnetroleclaims`
 --
 
-CREATE TABLE `felhasznalo` (
-  `id` int(11) NOT NULL,
-  `kapcsolattarto_nev` varchar(100) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `telefon` varchar(20) DEFAULT NULL,
-  `datum` timestamp NOT NULL DEFAULT current_timestamp(),
-  `SALT` varchar(64) NOT NULL,
-  `HASH` varchar(64) NOT NULL,
-  `jogosultsag` int(1) NOT NULL
+CREATE TABLE `aspnetroleclaims` (
+  `Id` int(11) NOT NULL,
+  `RoleId` varchar(255) NOT NULL,
+  `ClaimType` longtext DEFAULT NULL,
+  `ClaimValue` longtext DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `aspnetroles`
+--
+
+CREATE TABLE `aspnetroles` (
+  `Id` varchar(255) NOT NULL,
+  `Name` varchar(256) DEFAULT NULL,
+  `NormalizedName` varchar(256) DEFAULT NULL,
+  `ConcurrencyStamp` longtext DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- A tábla adatainak kiíratása `aspnetroles`
+--
+
+INSERT INTO `aspnetroles` (`Id`, `Name`, `NormalizedName`, `ConcurrencyStamp`) VALUES
+('50665d91-fd52-4a45-99a5-42ec611aa2ce', 'Tulaj', 'TULAJ', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `aspnetuserclaims`
+--
+
+CREATE TABLE `aspnetuserclaims` (
+  `Id` int(11) NOT NULL,
+  `UserId` varchar(255) NOT NULL,
+  `ClaimType` longtext DEFAULT NULL,
+  `ClaimValue` longtext DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `aspnetuserlogins`
+--
+
+CREATE TABLE `aspnetuserlogins` (
+  `LoginProvider` varchar(255) NOT NULL,
+  `ProviderKey` varchar(255) NOT NULL,
+  `ProviderDisplayName` longtext DEFAULT NULL,
+  `UserId` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `aspnetuserroles`
+--
+
+CREATE TABLE `aspnetuserroles` (
+  `UserId` varchar(255) NOT NULL,
+  `RoleId` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- A tábla adatainak kiíratása `aspnetuserroles`
+--
+
+INSERT INTO `aspnetuserroles` (`UserId`, `RoleId`) VALUES
+('27fa7fb0-4a39-4330-af61-1888de22076e', '50665d91-fd52-4a45-99a5-42ec611aa2ce');
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `aspnetusers`
+--
+
+CREATE TABLE `aspnetusers` (
+  `Id` varchar(255) NOT NULL,
+  `Fullname` longtext DEFAULT NULL,
+  `BirthDate` datetime(6) NOT NULL,
+  `UserName` varchar(256) DEFAULT NULL,
+  `NormalizedUserName` varchar(256) DEFAULT NULL,
+  `Email` varchar(256) DEFAULT NULL,
+  `NormalizedEmail` varchar(256) DEFAULT NULL,
+  `EmailConfirmed` tinyint(1) NOT NULL,
+  `PasswordHash` longtext DEFAULT NULL,
+  `SecurityStamp` longtext DEFAULT NULL,
+  `ConcurrencyStamp` longtext DEFAULT NULL,
+  `PhoneNumber` longtext DEFAULT NULL,
+  `PhoneNumberConfirmed` tinyint(1) NOT NULL,
+  `TwoFactorEnabled` tinyint(1) NOT NULL,
+  `LockoutEnd` datetime DEFAULT NULL,
+  `LockoutEnabled` tinyint(1) NOT NULL,
+  `AccessFailedCount` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- A tábla adatainak kiíratása `aspnetusers`
+--
+
+INSERT INTO `aspnetusers` (`Id`, `Fullname`, `BirthDate`, `UserName`, `NormalizedUserName`, `Email`, `NormalizedEmail`, `EmailConfirmed`, `PasswordHash`, `SecurityStamp`, `ConcurrencyStamp`, `PhoneNumber`, `PhoneNumberConfirmed`, `TwoFactorEnabled`, `LockoutEnd`, `LockoutEnabled`, `AccessFailedCount`) VALUES
+('27fa7fb0-4a39-4330-af61-1888de22076e', NULL, '2025-03-13 08:05:08.137000', 'Levi', 'LEVI', 'halaszl@kkszki.hu', 'HALASZL@KKSZKI.HU', 0, 'AQAAAAIAAYagAAAAECPtB6sCgdhTLesKIL6OoBONW/YrDY64WY2sjwOf9j+DFsEElba/b6oN47MRp3iiUQ==', 'EUZ23J2LYZKOSNCY55KPR67ZJVWENMLG', 'f2a32138-4088-4884-a5d1-31040ea20d1f', '06707760239', 0, 0, NULL, 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `aspnetusertokens`
+--
+
+CREATE TABLE `aspnetusertokens` (
+  `UserId` varchar(255) NOT NULL,
+  `LoginProvider` varchar(255) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `Value` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -46,7 +154,7 @@ CREATE TABLE `felhasznalo` (
 
 CREATE TABLE `jarmuvek` (
   `id` int(11) NOT NULL,
-  `hirdeto` int(11) NOT NULL,
+  `hirdeto` varchar(255) NOT NULL,
   `marka` varchar(100) DEFAULT NULL,
   `tipus` varchar(100) DEFAULT NULL,
   `evjarat` int(11) DEFAULT NULL,
@@ -68,8 +176,8 @@ CREATE TABLE `jarmuvek` (
 --
 
 INSERT INTO `jarmuvek` (`id`, `hirdeto`, `marka`, `tipus`, `evjarat`, `kilometer`, `szin`, `motor_tipus`, `motor_meret`, `teljesitmeny`, `sebessegvalto`, `ar`, `allapot`, `felszereltseg`, `muszaki_vizsga`, `elojel`) VALUES
-(1, 0, 'Toyota', 'Corolla', 2015, 120000, 'Fehér', 'Benzin', '1.60', 132, 'Automatikus', '3500000.00', 'Jó állapot', 'Klíma, Navigáció', '2025-12-01', 'Eladó'),
-(2, 0, 'BMW', 'M5 Competition', 2022, 165000, 'Fekete', 'Benzin', '3.00', 530, 'Automatikus', '29000000.00', 'Megkímélt', 'Digitális Klíma, Lemeztető, Összkerék', '2025-02-01', 'Eladó Garanciális');
+(1, '27fa7fb0-4a39-4330-af61-1888de22076e', 'Toyota', 'Corolla', 2015, 120000, 'Fehér', 'Benzin', '1.60', 132, 'Automatikus', '3500000.00', 'Jó állapot', 'Klíma, Navigáció', '2025-12-01', 'Eladó'),
+(2, '27fa7fb0-4a39-4330-af61-1888de22076e', 'BMW', 'M5 Competition', 2022, 165000, 'Fekete', 'Benzin', '3.00', 530, 'Automatikus', '29000000.00', 'Megkímélt', 'Digitális Klíma, Lemeztető, Összkerék', '2025-02-01', 'Eladó Garanciális');
 
 -- --------------------------------------------------------
 
@@ -112,16 +220,78 @@ CREATE TABLE `velemenyek` (
   `datum` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `__efmigrationshistory`
+--
+
+CREATE TABLE `__efmigrationshistory` (
+  `MigrationId` varchar(150) NOT NULL,
+  `ProductVersion` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- A tábla adatainak kiíratása `__efmigrationshistory`
+--
+
+INSERT INTO `__efmigrationshistory` (`MigrationId`, `ProductVersion`) VALUES
+('20250114112327_CreateAuthDb', '8.0.11'),
+('20250313075802_asd', '8.0.11');
+
 --
 -- Indexek a kiírt táblákhoz
 --
 
 --
--- A tábla indexei `felhasznalo`
+-- A tábla indexei `aspnetroleclaims`
 --
-ALTER TABLE `felhasznalo`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
+ALTER TABLE `aspnetroleclaims`
+  ADD PRIMARY KEY (`Id`),
+  ADD KEY `IX_AspNetRoleClaims_RoleId` (`RoleId`);
+
+--
+-- A tábla indexei `aspnetroles`
+--
+ALTER TABLE `aspnetroles`
+  ADD PRIMARY KEY (`Id`),
+  ADD UNIQUE KEY `RoleNameIndex` (`NormalizedName`);
+
+--
+-- A tábla indexei `aspnetuserclaims`
+--
+ALTER TABLE `aspnetuserclaims`
+  ADD PRIMARY KEY (`Id`),
+  ADD KEY `IX_AspNetUserClaims_UserId` (`UserId`);
+
+--
+-- A tábla indexei `aspnetuserlogins`
+--
+ALTER TABLE `aspnetuserlogins`
+  ADD PRIMARY KEY (`LoginProvider`,`ProviderKey`),
+  ADD KEY `IX_AspNetUserLogins_UserId` (`UserId`);
+
+--
+-- A tábla indexei `aspnetuserroles`
+--
+ALTER TABLE `aspnetuserroles`
+  ADD PRIMARY KEY (`UserId`,`RoleId`),
+  ADD KEY `IX_AspNetUserRoles_RoleId` (`RoleId`);
+
+--
+-- A tábla indexei `aspnetusers`
+--
+ALTER TABLE `aspnetusers`
+  ADD PRIMARY KEY (`Id`),
+  ADD UNIQUE KEY `UserNameIndex` (`NormalizedUserName`),
+  ADD KEY `EmailIndex` (`NormalizedEmail`),
+  ADD KEY `Id` (`Id`);
+
+--
+-- A tábla indexei `aspnetusertokens`
+--
+ALTER TABLE `aspnetusertokens`
+  ADD PRIMARY KEY (`UserId`,`LoginProvider`,`Name`);
 
 --
 -- A tábla indexei `jarmuvek`
@@ -153,14 +323,26 @@ ALTER TABLE `velemenyek`
   ADD KEY `jarmu_id` (`jarmu_id`);
 
 --
+-- A tábla indexei `__efmigrationshistory`
+--
+ALTER TABLE `__efmigrationshistory`
+  ADD PRIMARY KEY (`MigrationId`);
+
+--
 -- A kiírt táblák AUTO_INCREMENT értéke
 --
 
 --
--- AUTO_INCREMENT a táblához `felhasznalo`
+-- AUTO_INCREMENT a táblához `aspnetroleclaims`
 --
-ALTER TABLE `felhasznalo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `aspnetroleclaims`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT a táblához `aspnetuserclaims`
+--
+ALTER TABLE `aspnetuserclaims`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT a táblához `jarmuvek`
@@ -189,6 +371,43 @@ ALTER TABLE `velemenyek`
 --
 -- Megkötések a kiírt táblákhoz
 --
+
+--
+-- Megkötések a táblához `aspnetroleclaims`
+--
+ALTER TABLE `aspnetroleclaims`
+  ADD CONSTRAINT `FK_AspNetRoleClaims_AspNetRoles_RoleId` FOREIGN KEY (`RoleId`) REFERENCES `aspnetroles` (`Id`) ON DELETE CASCADE;
+
+--
+-- Megkötések a táblához `aspnetuserclaims`
+--
+ALTER TABLE `aspnetuserclaims`
+  ADD CONSTRAINT `FK_AspNetUserClaims_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
+
+--
+-- Megkötések a táblához `aspnetuserlogins`
+--
+ALTER TABLE `aspnetuserlogins`
+  ADD CONSTRAINT `FK_AspNetUserLogins_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
+
+--
+-- Megkötések a táblához `aspnetuserroles`
+--
+ALTER TABLE `aspnetuserroles`
+  ADD CONSTRAINT `FK_AspNetUserRoles_AspNetRoles_RoleId` FOREIGN KEY (`RoleId`) REFERENCES `aspnetroles` (`Id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_AspNetUserRoles_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
+
+--
+-- Megkötések a táblához `aspnetusers`
+--
+ALTER TABLE `aspnetusers`
+  ADD CONSTRAINT `aspnetusers_ibfk_1` FOREIGN KEY (`Id`) REFERENCES `jarmuvek` (`hirdeto`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Megkötések a táblához `aspnetusertokens`
+--
+ALTER TABLE `aspnetusertokens`
+  ADD CONSTRAINT `FK_AspNetUserTokens_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
 
 --
 -- Megkötések a táblához `kepek_video`
