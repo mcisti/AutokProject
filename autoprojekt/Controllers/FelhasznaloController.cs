@@ -19,7 +19,7 @@ namespace autoprojekt.Controllers
         [HttpGet]
         public async Task<ActionResult> Get()
         {
-            var fehasznalo = await _context.applicationUsers.Select(u=> new { u.Id, u.UserName, u.Email, u.PhoneNumber, u.BirthDate }).ToListAsync();
+            var fehasznalo = await _context.Aspnetusers.Select(u=> new { u.Id, u.UserName, u.Email, u.PhoneNumber, u.BirthDate }).ToListAsync();
             if (fehasznalo != null)
             {
                 return Ok(fehasznalo);
@@ -32,7 +32,7 @@ namespace autoprojekt.Controllers
         public IActionResult Get(string id)
         {
             using var db = new AutopiacContext();
-            var fehasznaloid = db.applicationUsers.Select(u => new {id= u.Id, u.UserName, u.Email, u.PhoneNumber, u.BirthDate }).FirstOrDefault(u=>u.id== id);
+            var fehasznaloid = db.Aspnetusers.Select(u => new {id= u.Id, u.UserName, u.Email, u.PhoneNumber, u.BirthDate }).FirstOrDefault(u=>u.id== id);
             if (fehasznaloid == null)
             {
                 return NotFound();
@@ -43,10 +43,10 @@ namespace autoprojekt.Controllers
         [HttpDelete]
         public async Task<ActionResult> DeleteById(string id)
         {
-            var felhasznalotorles = await _context.applicationUsers.FirstOrDefaultAsync(felhasznalotorles => felhasznalotorles.Id == id);
+            var felhasznalotorles = await _context.Aspnetusers.FirstOrDefaultAsync(felhasznalotorles => felhasznalotorles.Id == id);
             if (felhasznalotorles != null)
             {
-                _context.applicationUsers.Remove(felhasznalotorles);
+                _context.Aspnetusers.Remove(felhasznalotorles);
                 await _context.SaveChangesAsync();
                 return Ok(new { Message = "Sikeres felhasználó törlés" });
             }
@@ -57,7 +57,7 @@ namespace autoprojekt.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(string id, EditUserDto editUserDto)
         {
-            var felhasznalo = _context.applicationUsers.FirstOrDefault(u => u.Id == id);
+            var felhasznalo = _context.Aspnetusers.FirstOrDefault(u => u.Id == id);
             if (id != felhasznalo.Id)
             {
                 return BadRequest();

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace autoprojekt.Models;
 
@@ -8,7 +7,7 @@ public partial class Jarmuvek
 {
     public int Id { get; set; }
 
-    public int Hirdeto { get; set; }
+    public string Hirdeto { get; set; } = null!;
 
     public string? Marka { get; set; }
 
@@ -37,10 +36,10 @@ public partial class Jarmuvek
     public DateTime? MuszakiVizsga { get; set; }
 
     public string? Elojel { get; set; }
-    [JsonIgnore]
+
     public virtual ICollection<KepekVideo> KepekVideos { get; set; } = new List<KepekVideo>();
-    [JsonIgnore]
+
     public virtual ICollection<TortenetiAdatok> TortenetiAdatoks { get; set; } = new List<TortenetiAdatok>();
-    [JsonIgnore]
+
     public virtual ICollection<Velemenyek> Velemenyeks { get; set; } = new List<Velemenyek>();
 }

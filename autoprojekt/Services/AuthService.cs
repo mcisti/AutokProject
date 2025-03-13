@@ -24,7 +24,7 @@ namespace autoprojekt.Services
 
         public async Task<object> AssignRole(string email, string roleName)
         {
-            var user = await _dbContext.applicationUsers.FirstOrDefaultAsync(user => user.NormalizedEmail == email.ToUpper());
+            var user = await userManager.Users.FirstOrDefaultAsync(user => user.NormalizedEmail == email.ToUpper());
 
             if (user != null)
             {
@@ -44,7 +44,7 @@ namespace autoprojekt.Services
 
         public async Task<object> Login(LoginIUserDto loginUserDto)
         {
-            var user = await _dbContext.applicationUsers.FirstOrDefaultAsync(user => user.NormalizedUserName == loginUserDto.UserName.ToUpper());
+            var user = await userManager.Users.FirstOrDefaultAsync(user => user.NormalizedUserName == loginUserDto.UserName.ToUpper());
 
             bool isValid = await userManager.CheckPasswordAsync(user, loginUserDto.Password);
 
@@ -74,7 +74,7 @@ namespace autoprojekt.Services
 
             if (res.Succeeded)
             {
-                var existingUser = await _dbContext.applicationUsers.FirstOrDefaultAsync(user => user.UserName == createUserDto.UserName);
+                var existingUser = await userManager.Users.FirstOrDefaultAsync(user => user.UserName == createUserDto.UserName);
 
                 return new { result = new { user.UserName, user.Email }, message = "Sikeres regisztráció." };
             }
