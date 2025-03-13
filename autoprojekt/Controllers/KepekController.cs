@@ -1,9 +1,9 @@
-﻿using AutoProject.Models;
+﻿using autoprojekt.Models.Dtos;
 using autoprojekt.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace AutoProject.Controllers
+namespace autoprojekt.Controllers
 {
     [Route("api/Kepek")]
     [ApiController]

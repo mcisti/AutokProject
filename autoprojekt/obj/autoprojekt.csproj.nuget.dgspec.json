@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Tanulo\\Documents\\Projekt\\projekt\\autoprojekt\\autoprojekt.csproj": {}
+    "C:\\Users\\Tanulo\\halaszl\\projekt\\autoprojekt\\autoprojekt.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Tanulo\\Documents\\Projekt\\projekt\\autoprojekt\\autoprojekt.csproj": {
+    "C:\\Users\\Tanulo\\halaszl\\projekt\\autoprojekt\\autoprojekt.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tanulo\\Documents\\Projekt\\projekt\\autoprojekt\\autoprojekt.csproj",
+        "projectUniqueName": "C:\\Users\\Tanulo\\halaszl\\projekt\\autoprojekt\\autoprojekt.csproj",
         "projectName": "autoprojekt",
-        "projectPath": "C:\\Users\\Tanulo\\Documents\\Projekt\\projekt\\autoprojekt\\autoprojekt.csproj",
+        "projectPath": "C:\\Users\\Tanulo\\halaszl\\projekt\\autoprojekt\\autoprojekt.csproj",
         "packagesPath": "C:\\Users\\Tanulo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tanulo\\Documents\\Projekt\\projekt\\autoprojekt\\obj\\",
+        "outputPath": "C:\\Users\\Tanulo\\halaszl\\projekt\\autoprojekt\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -50,6 +51,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.14, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.11, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.11, )"
@@ -88,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

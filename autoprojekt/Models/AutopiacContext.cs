@@ -1,22 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace autoprojekt.Models;
 
-public partial class AutopiacContext : DbContext
+public partial class AutopiacContext : IdentityDbContext<ApplicationUser>
 {
     public AutopiacContext()
     {
 
     }
 
+    public DbSet<ApplicationUser> applicationUsers { get; set; } = null!;
+
     public AutopiacContext(DbContextOptions<AutopiacContext> options)
         : base(options)
     {
     }
 
-    public virtual DbSet<Felhasznalo> Felhasznalos { get; set; }
 
     public virtual DbSet<Jarmuvek> Jarmuveks { get; set; }
 
@@ -32,43 +32,6 @@ public partial class AutopiacContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Felhasznalo>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PRIMARY");
-
-            entity.ToTable("felhasznalo");
-
-            entity.HasIndex(e => e.Email, "email").IsUnique();
-
-            entity.Property(e => e.Id)
-                .HasColumnType("int(11)")
-                .HasColumnName("id");
-            entity.Property(e => e.Datum)
-                .HasDefaultValueSql("'current_timestamp()'")
-                .HasColumnType("timestamp")
-                .HasColumnName("datum");
-            entity.Property(e => e.Email)
-                .HasMaxLength(100)
-                .HasDefaultValueSql("'NULL'")
-                .HasColumnName("email");
-            entity.Property(e => e.Hash)
-                .HasMaxLength(64)
-                .HasColumnName("HASH");
-            entity.Property(e => e.Jogosultsag)
-                .HasColumnType("int(1)")
-                .HasColumnName("jogosultsag");
-            entity.Property(e => e.KapcsolattartoNev)
-                .HasMaxLength(100)
-                .HasDefaultValueSql("'NULL'")
-                .HasColumnName("kapcsolattarto_nev");
-            entity.Property(e => e.Salt)
-                .HasMaxLength(64)
-                .HasColumnName("SALT");
-            entity.Property(e => e.Telefon)
-                .HasMaxLength(20)
-                .HasDefaultValueSql("'NULL'")
-                .HasColumnName("telefon");
-        });
 
         modelBuilder.Entity<Jarmuvek>(entity =>
         {
@@ -242,6 +205,8 @@ public partial class AutopiacContext : DbContext
         });
 
         OnModelCreatingPartial(modelBuilder);
+
+        base.OnModelCreating(modelBuilder);
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
