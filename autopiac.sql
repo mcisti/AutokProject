@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Már 13. 09:42
+-- Létrehozás ideje: 2025. Már 17. 12:57
 -- Kiszolgáló verziója: 10.4.20-MariaDB
 -- PHP verzió: 7.3.29
 
@@ -177,7 +177,11 @@ CREATE TABLE `jarmuvek` (
 
 INSERT INTO `jarmuvek` (`id`, `hirdeto`, `marka`, `tipus`, `evjarat`, `kilometer`, `szin`, `motor_tipus`, `motor_meret`, `teljesitmeny`, `sebessegvalto`, `ar`, `allapot`, `felszereltseg`, `muszaki_vizsga`, `elojel`) VALUES
 (1, '27fa7fb0-4a39-4330-af61-1888de22076e', 'Toyota', 'Corolla', 2015, 120000, 'Fehér', 'Benzin', '1.60', 132, 'Automatikus', '3500000.00', 'Jó állapot', 'Klíma, Navigáció', '2025-12-01', 'Eladó'),
-(2, '27fa7fb0-4a39-4330-af61-1888de22076e', 'BMW', 'M5 Competition', 2022, 165000, 'Fekete', 'Benzin', '3.00', 530, 'Automatikus', '29000000.00', 'Megkímélt', 'Digitális Klíma, Lemeztető, Összkerék', '2025-02-01', 'Eladó Garanciális');
+(2, '27fa7fb0-4a39-4330-af61-1888de22076e', 'BMW', 'M5 Competition', 2022, 165000, 'Fekete', 'Benzin', '3.00', 530, 'Automatikus', '29000000.00', 'Megkímélt', 'Digitális Klíma, Lemeztető, Összkerék', '2025-02-01', 'Eladó Garanciális'),
+(3, '27fa7fb0-4a39-4330-af61-1888de22076e', 'Alfa Romeo', '156', 2005, 344000, 'Sötét kék', 'Dízel', '2.40', 175, 'Manuális', '800000.00', 'Normál', 'Digitális Klíma', '2026-08-17', 'Eladó'),
+(4, '27fa7fb0-4a39-4330-af61-1888de22076e', 'Audi', 'RS6', 2017, 125000, 'Fehér', 'Benzin', '4.00', 560, 'Automatikus', '17000000.00', 'Megkímélt', 'Ülés Fűtés', '2026-04-17', 'Eladó'),
+(5, '27fa7fb0-4a39-4330-af61-1888de22076e', 'Audi', 'A4', 2008, 182000, 'Fekete', 'Dízel', '2.00', 143, 'Manuális', '2785000.00', 'Kitűnő', 'Fedélzeti Komputer', '2027-01-17', 'Eladó'),
+(6, '27fa7fb0-4a39-4330-af61-1888de22076e', 'Lamborghini', 'Aventador', 2015, 58000, 'Fekete', 'Benzin', '6.40', 700, 'Automatikus', '99999999.99', 'Kitűnő', 'Automatizált Fedélzet', '2026-02-17', 'Eladó');
 
 -- --------------------------------------------------------
 
@@ -191,6 +195,24 @@ CREATE TABLE `kepek_video` (
   `tipus` enum('kep','video') DEFAULT NULL,
   `eleresi_ut` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- A tábla adatainak kiíratása `kepek_video`
+--
+
+INSERT INTO `kepek_video` (`id`, `jarmu_id`, `tipus`, `eleresi_ut`) VALUES
+(1, 6, 'kep', 'https://hatterkeptar.hu/hatterkep_kepek_mobil/lamborghini-aventador-lp700-4-fekete-elolnezet-hatterkep-25325.jpg'),
+(2, 6, 'kep', 'https://vezess2.p3k.hu/app/uploads/2024/04/lamborghini-huracan-sterrato-alle28892terrain-ad-personam-36.jpg'),
+(3, 1, 'kep', 'https://prod.pictures.autoscout24.net/listing-images/7389c4d2-12ca-467d-ad87-1ae79a72465c_9eb3c067-10b6-41a7-9582-aae55fe5ecc2.jpg/250x188.webp'),
+(4, 1, 'kep', 'https://www.autonavigator.hu/wp-content/uploads/2024/02/355432_source-scaled.jpg'),
+(5, 2, 'kep', 'https://player.hu/uploads/2019/05/P90346576_highRes_the-new-bmw-m5-editi.jpg'),
+(6, 2, 'kep', 'https://i.ytimg.com/vi/_PRlVSiSVx0/maxresdefault.jpg'),
+(7, 3, 'kep', 'https://ph-classic-prod-images.s3.amazonaws.com/nimg/39384/SOTW_Alfa156V6_04.jpg'),
+(8, 3, 'kep', 'https://www.alfaamore.hu/files/galleries/00565/00004.jpg'),
+(9, 4, 'kep', 'https://player.hu/uploads/2019/10/kimi-raikkonen-audi-rs6-player-9-1024x461.jpg'),
+(10, 4, 'kep', 'https://vezess2.p3k.hu/app/uploads/2013/04/60189_477884_1000x700.jpg.jpg'),
+(11, 5, 'kep', 'https://vezess2.p3k.hu/app/uploads/2006/04/3694_35377_1000x700.jpg.jpg'),
+(12, 5, 'kep', 'https://www.autonavigator.hu/wp-content/uploads/2017/01/179490_source.jpg');
 
 -- --------------------------------------------------------
 
@@ -348,13 +370,13 @@ ALTER TABLE `aspnetuserclaims`
 -- AUTO_INCREMENT a táblához `jarmuvek`
 --
 ALTER TABLE `jarmuvek`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT a táblához `kepek_video`
 --
 ALTER TABLE `kepek_video`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT a táblához `torteneti_adatok`
