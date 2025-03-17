@@ -28,11 +28,11 @@ namespace autoprojekt.Controllers
         }
 
 
-        [HttpGet("{id}")]
+        [HttpGet("Jarmu/{id}")]
         public IActionResult Get(int id)
         {
             using var db = new AutopiacContext();
-            var kepekid = db.KepekVideos.Find(id);
+            var kepekid = db.KepekVideos.Where(k=>k.JarmuId==id).ToList();
             if (kepekid == null)
             {
                 return NotFound();

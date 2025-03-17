@@ -409,7 +409,7 @@
         }
       }
     },
-    "/api/Kepek/{id}": {
+    "/api/Kepek/Jarmu/{id}": {
       "get": {
         "tags": [
           "Kepek"
@@ -430,7 +430,9 @@
             "description": "OK"
           }
         }
-      },
+      }
+    },
+    "/api/Kepek/{id}": {
       "put": {
         "tags": [
           "Kepek"

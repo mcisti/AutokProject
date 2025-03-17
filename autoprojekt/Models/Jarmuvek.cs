@@ -36,7 +36,7 @@ public partial class Jarmuvek
     public DateTime? MuszakiVizsga { get; set; }
 
     public string? Elojel { get; set; }
-
+    
     public virtual ICollection<KepekVideo> KepekVideos { get; set; } = new List<KepekVideo>();
 
     public virtual ICollection<TortenetiAdatok> TortenetiAdatoks { get; set; } = new List<TortenetiAdatok>();

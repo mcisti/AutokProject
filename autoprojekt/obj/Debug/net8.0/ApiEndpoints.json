@@ -237,22 +237,6 @@
   },
   {
     "ContainingType": "autoprojekt.Controllers.KepekController",
-    "Method": "Get",
-    "RelativePath": "api/Kepek/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "autoprojekt.Controllers.KepekController",
     "Method": "UpdateImage",
     "RelativePath": "api/Kepek/{id}",
     "HttpMethod": "PUT",
@@ -267,6 +251,22 @@
       {
         "Name": "kepek",
         "Type": "autoprojekt.Models.KepekVideo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoprojekt.Controllers.KepekController",
+    "Method": "Get",
+    "RelativePath": "api/Kepek/Jarmu/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
