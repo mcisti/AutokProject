@@ -3,8 +3,8 @@ import "./Login.css"
 
 export default function LoginPeople() {
   return (
-    <div id="webcrumbs"> 
-        	<div className="w-full flex justify-center"><div className="w-[400px] bg-white rounded-lg shadow-xl p-8">
+    <div id="webcrumbs" className='mt-5'> 
+        	<div className="w-full flex justify-center"><div className="w-[400px] bg-dark rounded-lg shadow-xl p-8">
 	  <div className="flex justify-center">
 	    <details className="w-full">
 	      <summary className="flex items-center justify-center text-lg font-semibold cursor-pointer hover:opacity-80 transition-opacity">
@@ -56,13 +56,13 @@ export default function LoginPeople() {
 	  </div>
 	  
 	  <div className="mt-6 flex justify-center space-x-4">
-	    <button className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-all duration-200">
+	    <button className="p-2 rounded-full bg-black-100 hover:bg-gray-200 transition-all duration-200">
 	      <i className="fa-brands fa-facebook text-xl"></i>
 	    </button>
-	    <button className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-all duration-200">
+	    <button className="p-2 rounded-full bg-black-100 hover:bg-gray-200 transition-all duration-200">
 	      <i className="fa-brands fa-google text-xl"></i>
 	    </button>
-	    <button className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-all duration-200">
+	    <button className="p-2 rounded-full bg-black-100 hover:bg-gray-200 transition-all duration-200">
 	      <i className="fa-brands fa-apple text-xl"></i>
 	    </button>
 	  </div>
