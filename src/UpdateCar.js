@@ -20,11 +20,22 @@ export default function UpdateCar() {
     function Put() {
         axios.put(`${process.env.REACT_APP_URL}/api/Jarmuvek/${params.id}`, 
            {
-                id: Number(params.id),
-                nev: document.getElementById("nev").value,
-                ertekeles: Number(document.getElementById("ertekeles").value),
-                kiadasEve: Number(document.getElementById("kiadasEve").value),
-                kepneve: document.getElementById("kepneve").value,
+            id: Number(document.getElementById("id").value),
+            hirdeto: document.getElementById("hirdeto").value,
+            marka: document.getElementById("marka").value,
+            tipus: document.getElementById("tipus").value,
+            evjarat: Number(document.getElementById("evjarat").value),
+            kilometer: Number(document.getElementById("kilometer").value),
+            szin: document.getElementById("szin").value,
+            motorTipus: document.getElementById("motorTipus").value,
+            motorMeret: Number(document.getElementById("motorMeret").value),
+            teljesitmeny: Number(document.getElementById("teljesitmeny").value),
+            sebessegvalto: document.getElementById("sebessegvalto").value,
+            ar: Number(document.getElementById("ar").value),
+            allapot: document.getElementById("allapot").value,
+            felszereltseg: document.getElementById("felszereltseg").value,
+            muszakiVizsga: document.getElementById("muszakiVizsga").value,
+            elojel: document.getElementById("elojel").value,
             })
         .then(function() {
             navigate("/")
@@ -47,20 +58,68 @@ export default function UpdateCar() {
         Put()
     }}>
         <div className="mb-3">
-            <label htmlFor="nev" className="form-label">Név</label>
-            <input type="text" className="form-control" id="nev" defaultValue={data.name}/>
+            <label htmlFor="id" className="form-label">Id</label>
+            <input type="number" className="form-control" id="id" defaultValue={data.id}/>
         </div>
         <div className="mb-3">
-            <label htmlFor="ertekeles" className="form-label">Értékelés</label>
-            <input type="number" className="form-control" id="ertekeles" min="1" max="5" defaultValue={data.world_ch_won}/>
+            <label htmlFor="hirdeto" className="form-label">Hírdető</label>
+            <input type="text" className="form-control" id="hirdeto"  defaultValue={data.hirdeto}/>
         </div>
         <div className="mb-3">
-            <label htmlFor="kiadasEve" className="form-label">Kiadás éve</label>
-            <input type="number" className="form-control" id="kiadasEve" min="1800" max={year} defaultValue={data.kiadasEve}/>
+            <label htmlFor="marka" className="form-label">Márka</label>
+            <input type="text" className="form-control" id="marka" defaultValue={data.marka}/>
         </div>
         <div className="mb-3">
-            <label htmlFor="kepneve" className="form-label">Kép URL</label>
-            <input type="text" className="form-control" id="kepneve" defaultValue={data.kepneve}/>
+            <label htmlFor="tipus" className="form-label">Típus</label>
+            <input type="text" className="form-control" id="tipus" defaultValue={data.tipus}/>
+        </div>
+        <div className="mb-3">
+            <label htmlFor="evjarat" className="form-label">Évjárat</label>
+            <input type="number" className="form-control" id="evjarat" defaultValue={data.evjarat}/>
+        </div>
+        <div className="mb-3">
+            <label htmlFor="kilometer" className="form-label">Kilométeróra állás</label>
+            <input type="number" className="form-control" id="kilometer" defaultValue={data.kilometer}/>
+        </div>
+        <div className="mb-3">
+            <label htmlFor="szin" className="form-label">Szín</label>
+            <input type="text" className="form-control" id="szin" defaultValue={data.szin}/>
+        </div>
+        <div className="mb-3">
+            <label htmlFor="motorTipus" className="form-label">Üzemanyag</label>
+            <input type="text" className="form-control" id="motorTipus" defaultValue={data.tipus}/>
+        </div>
+        <div className="mb-3">
+            <label htmlFor="motorMeret" className="form-label">Hengerürtartalom</label>
+            <input type="number" className="form-control" id="motorMeret" defaultValue={data.motorMeret}/>
+        </div>
+        <div className="mb-3">
+            <label htmlFor="teljesitmeny" className="form-label">teljesitmeny</label>
+            <input type="number" className="form-control" id="teljesitmeny" defaultValue={data.teljesitmeny}/>
+        </div>
+        <div className="mb-3">
+            <label htmlFor="sebessegvalto" className="form-label">Sebességváltó</label>
+            <input type="text" className="form-control" id="sebessegvalto" defaultValue={data.sebessegvalto}/>
+        </div>
+        <div className="mb-3">
+            <label htmlFor="ar" className="form-label">Ár</label>
+            <input type="number" className="form-control" id="ar" defaultValue={data.ar}/>
+        </div>
+        <div className="mb-3">
+            <label htmlFor="allapot" className="form-label">Állapot</label>
+            <input type="text" className="form-control" id="allapot" defaultValue={data.allapot}/>
+        </div>
+        <div className="mb-3">
+            <label htmlFor="felszereltseg" className="form-label">Felszereltség</label>
+            <input type="text" className="form-control" id="felszereltseg" defaultValue={data.felszereltseg}/>
+        </div>
+        <div className="mb-3">
+            <label htmlFor="muszakiVizsga" className="form-label">Műszaki érvényesség</label>
+            <input type="text" className="form-control" id="muszakiVizsga" defaultValue={data.muszakiVizsga}/>
+        </div>
+        <div className="mb-3">
+            <label htmlFor="elojel" className="form-label">Hírdetés tipusa</label>
+            <input type="text" className="form-control" id="elojel" defaultValue={data.elojel}/>
         </div>
         <button type="submit" className="btn btn-primary">Film frissítése</button>
     </form>
