@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Már 17. 12:57
+-- Létrehozás ideje: 2025. Már 20. 10:59
 -- Kiszolgáló verziója: 10.4.20-MariaDB
 -- PHP verzió: 7.3.29
 
@@ -93,13 +93,6 @@ CREATE TABLE `aspnetuserroles` (
   `RoleId` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- A tábla adatainak kiíratása `aspnetuserroles`
---
-
-INSERT INTO `aspnetuserroles` (`UserId`, `RoleId`) VALUES
-('27fa7fb0-4a39-4330-af61-1888de22076e', '50665d91-fd52-4a45-99a5-42ec611aa2ce');
-
 -- --------------------------------------------------------
 
 --
@@ -125,13 +118,6 @@ CREATE TABLE `aspnetusers` (
   `LockoutEnabled` tinyint(1) NOT NULL,
   `AccessFailedCount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- A tábla adatainak kiíratása `aspnetusers`
---
-
-INSERT INTO `aspnetusers` (`Id`, `Fullname`, `BirthDate`, `UserName`, `NormalizedUserName`, `Email`, `NormalizedEmail`, `EmailConfirmed`, `PasswordHash`, `SecurityStamp`, `ConcurrencyStamp`, `PhoneNumber`, `PhoneNumberConfirmed`, `TwoFactorEnabled`, `LockoutEnd`, `LockoutEnabled`, `AccessFailedCount`) VALUES
-('27fa7fb0-4a39-4330-af61-1888de22076e', NULL, '2025-03-13 08:05:08.137000', 'Levi', 'LEVI', 'halaszl@kkszki.hu', 'HALASZL@KKSZKI.HU', 0, 'AQAAAAIAAYagAAAAECPtB6sCgdhTLesKIL6OoBONW/YrDY64WY2sjwOf9j+DFsEElba/b6oN47MRp3iiUQ==', 'EUZ23J2LYZKOSNCY55KPR67ZJVWENMLG', 'f2a32138-4088-4884-a5d1-31040ea20d1f', '06707760239', 0, 0, NULL, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -177,11 +163,13 @@ CREATE TABLE `jarmuvek` (
 
 INSERT INTO `jarmuvek` (`id`, `hirdeto`, `marka`, `tipus`, `evjarat`, `kilometer`, `szin`, `motor_tipus`, `motor_meret`, `teljesitmeny`, `sebessegvalto`, `ar`, `allapot`, `felszereltseg`, `muszaki_vizsga`, `elojel`) VALUES
 (1, '27fa7fb0-4a39-4330-af61-1888de22076e', 'Toyota', 'Corolla', 2015, 120000, 'Fehér', 'Benzin', '1.60', 132, 'Automatikus', '3500000.00', 'Jó állapot', 'Klíma, Navigáció', '2025-12-01', 'Eladó'),
-(2, '27fa7fb0-4a39-4330-af61-1888de22076e', 'BMW', 'M5 Competition', 2022, 165000, 'Fekete', 'Benzin', '3.00', 530, 'Automatikus', '29000000.00', 'Megkímélt', 'Digitális Klíma, Lemeztető, Összkerék', '2025-02-01', 'Eladó Garanciális'),
+(2, '27fa7fb0-4a39-4330-af61-1888de22076e', 'BMW', 'M5 Competition', 2022, 165000, 'Fekete', 'M5 Competition', '2.99', 530, 'Automatikus', '29000000.00', 'Megkímélt', 'Digitális Klíma, Lemeztető, Összkerék', '2025-02-01', 'Eladó Garanciális'),
 (3, '27fa7fb0-4a39-4330-af61-1888de22076e', 'Alfa Romeo', '156', 2005, 344000, 'Sötét kék', 'Dízel', '2.40', 175, 'Manuális', '800000.00', 'Normál', 'Digitális Klíma', '2026-08-17', 'Eladó'),
 (4, '27fa7fb0-4a39-4330-af61-1888de22076e', 'Audi', 'RS6', 2017, 125000, 'Fehér', 'Benzin', '4.00', 560, 'Automatikus', '17000000.00', 'Megkímélt', 'Ülés Fűtés', '2026-04-17', 'Eladó'),
 (5, '27fa7fb0-4a39-4330-af61-1888de22076e', 'Audi', 'A4', 2008, 182000, 'Fekete', 'Dízel', '2.00', 143, 'Manuális', '2785000.00', 'Kitűnő', 'Fedélzeti Komputer', '2027-01-17', 'Eladó'),
-(6, '27fa7fb0-4a39-4330-af61-1888de22076e', 'Lamborghini', 'Aventador', 2015, 58000, 'Fekete', 'Benzin', '6.40', 700, 'Automatikus', '99999999.99', 'Kitűnő', 'Automatizált Fedélzet', '2026-02-17', 'Eladó');
+(6, '27fa7fb0-4a39-4330-af61-1888de22076e', 'Lamborghini', 'Aventador', 2015, 58000, 'Fekete', 'Benzin', '6.40', 700, 'Automatikus', '99999999.99', 'Kitűnő', 'Automatizált Fedélzet', '2026-02-17', 'Eladó'),
+(7, '27fa7fb0-4a39-4330-af61-1888de22076e', 'Mercedes-benz', 'c250', 1999, 278543, 'fekete', 'dizel', '2.50', 150, 'Automatikus', '1550000.00', 'normál', 'klíma,szervó kormány,elektromos ablak', '2025-03-20', 'Eladó'),
+(8, '27fa7fb0-4a39-4330-af61-1888de22076e', 'Mercedes-benz', 'S600', 1991, 143959, 'Fekete', 'Benzin', '6.00', 408, 'Automatikus', '16450000.00', 'kitőnű', 'Memóriás ülés,klíma,börbelső', '2025-03-20', 'Eladó');
 
 -- --------------------------------------------------------
 
@@ -212,7 +200,11 @@ INSERT INTO `kepek_video` (`id`, `jarmu_id`, `tipus`, `eleresi_ut`) VALUES
 (9, 4, 'kep', 'https://player.hu/uploads/2019/10/kimi-raikkonen-audi-rs6-player-9-1024x461.jpg'),
 (10, 4, 'kep', 'https://vezess2.p3k.hu/app/uploads/2013/04/60189_477884_1000x700.jpg.jpg'),
 (11, 5, 'kep', 'https://vezess2.p3k.hu/app/uploads/2006/04/3694_35377_1000x700.jpg.jpg'),
-(12, 5, 'kep', 'https://www.autonavigator.hu/wp-content/uploads/2017/01/179490_source.jpg');
+(12, 5, 'kep', 'https://www.autonavigator.hu/wp-content/uploads/2017/01/179490_source.jpg'),
+(13, 7, 'kep', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Mercedes_C-Klasse_T-Modell_%28S202%29_Facelift_20090913_front.jpg/1280px-Mercedes_C-Klasse_T-Modell_%28S202%29_Facelift_20090913_front.jpg'),
+(14, 7, 'kep', 'https://www.autonavigator.hu/wp-content/uploads/2022/02/311240_source-scaled.jpg'),
+(15, 8, 'kep', 'https://img.hasznaltautocdn.com/640x480/21253052/4819975.jpg'),
+(16, 8, 'kep', 'https://img.hasznaltautocdn.com/640x480/21253052/4819957.jpg');
 
 -- --------------------------------------------------------
 
@@ -370,13 +362,13 @@ ALTER TABLE `aspnetuserclaims`
 -- AUTO_INCREMENT a táblához `jarmuvek`
 --
 ALTER TABLE `jarmuvek`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT a táblához `kepek_video`
 --
 ALTER TABLE `kepek_video`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT a táblához `torteneti_adatok`
