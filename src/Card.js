@@ -8,7 +8,8 @@ export default function Card({ car, images, handleDelete, theme }) {
         <img src={images ? images[0]?.eleresiUt : ""} className="card-img-top" />
         <div className="card-body">
           <h5 className="card-title">{car.marka} {car.tipus}</h5>
-          <p className="card-text">Évjárat: {car.evjarat}</p>        
+          <p className="card-text">Évjárat: {car.evjarat}</p>
+          <p className="card-text">{car.ar.toLocaleString()} Ft</p>        
           <Link to={"/car/" + car.id}>
             <button className={`btn ${theme === 'dark' ? 'btn-light' : 'btn-dark'}`} >Több</button>
           </Link>
