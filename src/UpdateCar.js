@@ -51,8 +51,7 @@ export default function UpdateCar() {
 
   return (
     <div className='p-5 content bg-whitesmoke text-center'>
-        <Navbar/>
-        <h1 className="title">{data.name} módosítása:</h1>
+        <h1 className="page-title-gradient">{data.name} módosítása:</h1>
     <form onSubmit={function(event) {
         event.preventDefault()
         Put()
