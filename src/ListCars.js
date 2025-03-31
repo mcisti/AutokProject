@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import axios from "axios";
 
-export default function ListFilms({theme}) {
+export default function ListFilms({theme, logged}) {
   const [cars, setCars] = useState([]);
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -11,6 +11,7 @@ export default function ListFilms({theme}) {
   useEffect(() => {
     GetData();
   }, []);
+
 
   function GetData() {
     setIsLoading(true);
@@ -69,6 +70,7 @@ export default function ListFilms({theme}) {
                   images={sortedImages}
                   handleDelete={Delete}
                   theme={theme}
+                  logged={logged}
                 />
                 </div>
               );

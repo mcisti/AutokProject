@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import Navbar from './Navbar';
 
-export default function UpdateCar() {
+export default function UpdateCar({theme, logged}) {
 
     const [data, setData] = useState({});
 
@@ -12,6 +12,11 @@ export default function UpdateCar() {
     const navigate = useNavigate()
     const params = useParams()
 
+    useEffect(() => {
+        if(!logged) {
+          navigate("/");
+        }
+    }, [logged, navigate])
     
     useEffect(() => {
         GetId()

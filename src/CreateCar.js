@@ -1,8 +1,8 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export default function CreateCar({theme}) {
+export default function CreateCar({theme, logged}) {
     const [formData, setFormData] = useState({
         hirdeto: "",
         marka: "",
@@ -27,6 +27,12 @@ export default function CreateCar({theme}) {
     };
     
     const navigate = useNavigate();
+
+    useEffect(() => {
+            if(!logged) {
+              navigate("/");
+            }
+    }, [logged, navigate])
 
     function handleSubmit() {
 
