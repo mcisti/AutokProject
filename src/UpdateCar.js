@@ -25,8 +25,8 @@ export default function UpdateCar({theme, logged}) {
     function Put() {
         axios.put(`${process.env.REACT_APP_URL}/api/Jarmuvek/${params.id}`, 
            {
-            id: Number(document.getElementById("id").value),
-            hirdeto: document.getElementById("hirdeto").value,
+            id: Number(params.id),
+            hirdeto: localStorage.getItem("userId"),
             marka: document.getElementById("marka").value,
             tipus: document.getElementById("tipus").value,
             evjarat: Number(document.getElementById("evjarat").value),
@@ -56,19 +56,11 @@ export default function UpdateCar({theme, logged}) {
 
   return (
     <div className='p-5 content bg-whitesmoke text-center'>
-        <h1 className="page-title-gradient">{data.name} módosítása:</h1>
+        <h1 className="page-title-gradient">{data.marka} {data.tipus} módosítása:</h1>
     <form onSubmit={function(event) {
         event.preventDefault()
         Put()
     }}>
-        <div className="mb-3">
-            <label htmlFor="id" className="form-label">Id</label>
-            <input type="number" className="form-control" id="id" defaultValue={data.id}/>
-        </div>
-        <div className="mb-3">
-            <label htmlFor="hirdeto" className="form-label">Hírdető</label>
-            <input type="text" className="form-control" id="hirdeto"  defaultValue={data.hirdeto}/>
-        </div>
         <div className="mb-3">
             <label htmlFor="marka" className="form-label">Márka</label>
             <input type="text" className="form-control" id="marka" defaultValue={data.marka}/>
@@ -119,7 +111,7 @@ export default function UpdateCar({theme, logged}) {
         </div>
         <div className="mb-3">
             <label htmlFor="muszakiVizsga" className="form-label">Műszaki érvényesség</label>
-            <input type="text" className="form-control" id="muszakiVizsga" defaultValue={data.muszakiVizsga}/>
+            <input type="date" className="form-control" id="muszakiVizsga" defaultValue={data.muszakiVizsga}/>
         </div>
         <div className="mb-3">
             <label htmlFor="elojel" className="form-label">Hírdetés tipusa</label>

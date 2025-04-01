@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
+import { jwtDecode } from 'jwt-decode';
 
 export default function LoginPeople({theme, logged, setLogged}) {
   const [loginData, setLoginData] = useState({ userName: '', password: '' });
@@ -42,14 +43,16 @@ export default function LoginPeople({theme, logged, setLogged}) {
   const handleLogin = async (e) => {
     e.preventDefault();
     setMessage('');
+    
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/Bejelentkezes`, loginData);
+      const response = await axios.post(`${process.env.REACT_APP_URL}/api/Bejelentkezes`, loginData);
 	  console.log(response);
       localStorage.setItem('token', response.data.token);
+      localStorage.setItem('userId', jwtDecode(response.data.token).sub);
       setMessage('Sikeres bejelentkezés! Átirányítás...');
       setTimeout(() => {
 		setLogged(true);
-		navigate('/');
+		  navigate('/');
 	  }, 2000);
     } catch (error) {
 		console.error("Hiba: ", error);
@@ -64,7 +67,7 @@ export default function LoginPeople({theme, logged, setLogged}) {
       return setMessage('A jelszavak nem egyeznek.');
     }
     try {
-		const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/Regisztracio`, {
+		const response = await axios.post(`${process.env.REACT_APP_URL}/api/Regisztracio`, {
 		userName: registerData.userName,
 		email: registerData.email,
 		password: registerData.password,

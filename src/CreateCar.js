@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 export default function CreateCar({theme, logged}) {
     const [formData, setFormData] = useState({
-        hirdeto: "",
+        hirdeto: localStorage.getItem("userId"),
         marka: "",
         tipus: "",
         evjarat: "",
@@ -33,9 +33,11 @@ export default function CreateCar({theme, logged}) {
               navigate("/");
             }
     }, [logged, navigate])
+    
 
     function handleSubmit() {
-
+        console.log(formData);
+        
         axios.post(`${process.env.REACT_APP_URL}/api/Jarmuvek`, {
             ...formData,
             evjarat: Number(formData.evjarat),
@@ -57,12 +59,6 @@ export default function CreateCar({theme, logged}) {
                 event.preventDefault()
                 handleSubmit()
             }}>
-                <div className='form-group row mb-4'>
-                    <label htmlFor="hirdeto" className='col-sm-3 col-form-label'>Hirdető:</label>
-                    <div className='col-sm-9'>
-                        <input type="text" className={`form-control ${theme === 'dark' ? 'bg-secondary text-light' : ''}`} id="hirdeto" value={formData.hirdeto} onChange={handleChange} required/>
-                    </div>
-                </div>
                 <div className='form-group row mb-4'>
                     <label htmlFor="marka" className='col-sm-3 col-form-label'>Márka:</label>
                     <div className='col-sm-9'>
@@ -138,7 +134,7 @@ export default function CreateCar({theme, logged}) {
                 <div className='form-group row mb-4'>
                     <label htmlFor="muszakiVizsga" className='col-sm-3 col-form-label'>Műszaki érvényesség:</label>
                     <div className='col-sm-9'>
-                        <input type="text" className={`form-control ${theme === 'dark' ? 'bg-secondary text-light' : ''}`} id="muszakiVizsga" value={formData.muszakiVizsga} onChange={handleChange} required/>
+                        <input type="date" className={`form-control ${theme === 'dark' ? 'bg-secondary text-light' : ''}`} id="muszakiVizsga" value={formData.muszakiVizsga} onChange={handleChange} required/>
                     </div>
                 </div>
                 <div className='form-group row mb-4'>

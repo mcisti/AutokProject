@@ -10,6 +10,7 @@ export default function Navbar({ theme, setTheme, logged, setLogged }) {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("userId");
     setLogged(false);
   }
 

@@ -37,7 +37,7 @@ function App() {
         <Route path="/car/:id" element={<SingleCar theme={theme} />} />
         <Route path="/updatecar/:id" element={<UpdateCar logged={logged}/>} theme={theme} />
         <Route path="/login" element={<LoginPeople logged={logged} setLogged={setLogged} theme={theme} />} />
-        <Route path="/hirdeteseim" element={<ListCars theme={theme} />} />
+        <Route path="/hirdeteseim" element={<ListCars logged={logged} theme={theme} />} />
       </Routes>
     </div>
   );

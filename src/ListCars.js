@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
-export default function ListFilms({theme, logged}) {
+export default function ListFilms({ theme, logged }) {
   const [cars, setCars] = useState([]);
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   let sortedImages = [];
+  const location = useLocation()
+  const path = location.pathname;
+  const userId = localStorage.getItem("userId");
+
 
   useEffect(() => {
     GetData();
@@ -47,7 +52,7 @@ export default function ListFilms({theme, logged}) {
     <div>
 
       <div className="p-5 m-auto text-center content bg-ivory">
-        <h1 className="page-title-gradient">Autók:</h1>
+        <h1 className="page-title-gradient">{path === "/" ? "Autók:" : "Hírdetéseim:"}</h1>
         {isLoading ? (
           <div className="text-center my-5">
             <div className="spinner-border text-light" role="status">
@@ -64,14 +69,17 @@ export default function ListFilms({theme, logged}) {
               );
               return (
                 <div className="col-sm-6 col-md-4 col-lg-3 mb-4 d-flex" key={data.id}>
-                <Card
-                  key={data.id}
-                  car={data}
-                  images={sortedImages}
-                  handleDelete={Delete}
-                  theme={theme}
-                  logged={logged}
-                />
+                  {
+                    path === "/" || (path === "/hirdeteseim" && userId === data.hirdeto) ?
+                      <Card
+                        key={data.id}
+                        car={data}
+                        images={sortedImages}
+                        handleDelete={Delete}
+                        theme={theme}
+                        logged={logged}
+                      /> : null
+                  }
                 </div>
               );
             })}
