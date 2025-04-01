@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using autoprojekt.Models;
 
@@ -10,9 +11,11 @@ using autoprojekt.Models;
 namespace autoprojekt.Migrations
 {
     [DbContext(typeof(AutopiacContext))]
-    partial class AutopiacContextModelSnapshot : ModelSnapshot
+    [Migration("20250401082424_createdb")]
+    partial class createdb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

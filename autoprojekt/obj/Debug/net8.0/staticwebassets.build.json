@@ -1,12 +1,11 @@
 {
   "Version": 1,
-  "Hash": "gHzvJHEbEOv6grSigawHakXltPDoGgP4Ml9NwB6wlgw=",
+  "Hash": "JIi31YnP5Bhp6NqOGhUBsjDVp2GIucZTakAtV8ovYjk=",
   "Source": "autoprojekt",
   "BasePath": "_content/autoprojekt",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
+  "Assets": []
 }

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace autoprojekt.Models;
 
-public partial class AutopiacContext : DbContext
+public partial class AutopiacContext : IdentityDbContext<ApplicationUser>
 {
     public AutopiacContext()
     {
@@ -14,6 +15,8 @@ public partial class AutopiacContext : DbContext
         : base(options)
     {
     }
+
+    public DbSet<ApplicationUser> applicationUsers { get; set; } = null!;
 
     public virtual DbSet<Aspnetrole> Aspnetroles { get; set; }
 
@@ -354,6 +357,9 @@ public partial class AutopiacContext : DbContext
         });
 
         OnModelCreatingPartial(modelBuilder);
+
+
+        base.OnModelCreating(modelBuilder);
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
