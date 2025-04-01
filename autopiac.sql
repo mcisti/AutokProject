@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Már 20. 10:59
+-- Létrehozás ideje: 2025. Ápr 01. 11:14
 -- Kiszolgáló verziója: 10.4.20-MariaDB
 -- PHP verzió: 7.3.29
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `autopiac`
 --
-CREATE DATABASE IF NOT EXISTS `autopiac` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `autopiac`;
 
 -- --------------------------------------------------------
 
@@ -118,6 +116,15 @@ CREATE TABLE `aspnetusers` (
   `LockoutEnabled` tinyint(1) NOT NULL,
   `AccessFailedCount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- A tábla adatainak kiíratása `aspnetusers`
+--
+
+INSERT INTO `aspnetusers` (`Id`, `Fullname`, `BirthDate`, `UserName`, `NormalizedUserName`, `Email`, `NormalizedEmail`, `EmailConfirmed`, `PasswordHash`, `SecurityStamp`, `ConcurrencyStamp`, `PhoneNumber`, `PhoneNumberConfirmed`, `TwoFactorEnabled`, `LockoutEnd`, `LockoutEnabled`, `AccessFailedCount`) VALUES
+('27fa7fb0-4a39-4330-af61-1888de22076e', 'XDDDDDD', '2025-04-02 10:38:58.000000', 'valami', 'VALAMI', 'valami@gmail.com', 'VALAMI@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAEAdU3dAIQMArCuRipO/x9ly+H9WED+58fCFR9aJ/VhXU8/aRadLvkr15VjwfZQWjlg==', 'TODNZTHGQEOKCION2BRQJ65RLM44LQ2P', '318ae2cd-5206-411f-97f1-57fd59757dc6', '06703870023', 0, 0, '2025-04-01 10:35:25', 0, 0),
+('6ce9701b-565c-438f-b9eb-aed891a2425a', NULL, '2025-04-01 08:19:40.031000', 'levi', 'LEVI', 'string', 'STRING', 0, 'AQAAAAIAAYagAAAAEAAbZHLO4LrT0DcUCStB3JFkRAcT3wBDi7EFXr+ZUT/mJpEpMgkREtPh6hXIXYvLEQ==', 'RZAAOZXTTP3KGPPUSCSKPBJVAR7XTFBV', 'f183fa7d-530c-4872-a85a-6d1b8da632bf', 'string', 0, 0, NULL, 1, 0),
+('9910992c-5638-4f86-b061-1a190fff91a8', NULL, '2025-04-01 08:19:40.031000', 'szbalesz', 'SZBALESZ', 'string', 'STRING', 0, 'AQAAAAIAAYagAAAAECCKO9JrPZijHR0YjGcvxoDdBzI5QpX4kPwO3Jl5JtRrCJE1J7oK7f7fP1smJpdLQg==', 'FIEJOLLFFPUESXFOPJX2QH4P6A3O4OQO', '21884721-769b-4854-a0f2-f1a03889237f', 'string', 0, 0, NULL, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -412,16 +419,16 @@ ALTER TABLE `aspnetuserroles`
   ADD CONSTRAINT `FK_AspNetUserRoles_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
 
 --
--- Megkötések a táblához `aspnetusers`
---
-ALTER TABLE `aspnetusers`
-  ADD CONSTRAINT `aspnetusers_ibfk_1` FOREIGN KEY (`Id`) REFERENCES `jarmuvek` (`hirdeto`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Megkötések a táblához `aspnetusertokens`
 --
 ALTER TABLE `aspnetusertokens`
   ADD CONSTRAINT `FK_AspNetUserTokens_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
+
+--
+-- Megkötések a táblához `jarmuvek`
+--
+ALTER TABLE `jarmuvek`
+  ADD CONSTRAINT `jarmuvek_ibfk_1` FOREIGN KEY (`hirdeto`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
 
 --
 -- Megkötések a táblához `kepek_video`
