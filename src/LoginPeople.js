@@ -48,7 +48,10 @@ export default function LoginPeople({theme, logged, setLogged}) {
       const response = await axios.post(`${process.env.REACT_APP_URL}/api/Bejelentkezes`, loginData);
 	  console.log(response);
       localStorage.setItem('token', response.data.token);
-      localStorage.setItem('userId', jwtDecode(response.data.token).sub);
+      const decoded = jwtDecode(response.data.token)
+      localStorage.setItem('userId', decoded.sub);
+      localStorage.setItem('role', decoded.role);
+      
       setMessage('Sikeres bejelentkezés! Átirányítás...');
       setTimeout(() => {
 		setLogged(true);

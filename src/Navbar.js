@@ -3,6 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 
 export default function Navbar({ theme, setTheme, logged, setLogged }) {
   const location = useLocation();
+  const isAdmin = localStorage.getItem("role") === "Admin";
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
@@ -57,6 +58,14 @@ export default function Navbar({ theme, setTheme, logged, setLogged }) {
               <li className="nav-item">
                 <NavLink to="/hirdeteseim" className={({ isActive }) => "nav-link mx-2" + (isActive ? " active" : "")}>
                   Hírdetéseim
+                </NavLink>
+              </li>
+            ) : null
+            }
+            {isAdmin ? (
+              <li className="nav-item">
+                <NavLink to="/admin" className={({ isActive }) => "nav-link mx-2" + (isActive ? " active" : "")}>
+                  Admin
                 </NavLink>
               </li>
             ) : null

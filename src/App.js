@@ -7,11 +7,13 @@ import UpdateCar from "./UpdateCar";
 import LoginPeople from "./LoginPeople";
 import Navbar from "./Navbar";
 import { useEffect, useState } from "react";
+import Admin from "./Admin";
 
 function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
   const [logged, setLogged] = useState(false);
   const token = localStorage.getItem("token");
+  
 
   useEffect(() => {
     document.body.className = theme === "dark" ? "dark-mode" : "light-mode";
@@ -38,6 +40,7 @@ function App() {
         <Route path="/updatecar/:id" element={<UpdateCar logged={logged}/>} theme={theme} />
         <Route path="/login" element={<LoginPeople logged={logged} setLogged={setLogged} theme={theme} />} />
         <Route path="/hirdeteseim" element={<ListCars logged={logged} theme={theme} />} />
+        <Route path="/admin" element={<Admin theme={theme} />} />
       </Routes>
     </div>
   );

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 export default function Card({ car, images, handleDelete, theme, logged }) {
 
   const userId = localStorage.getItem("userId");
+  const isAdmin = localStorage.getItem("role") === "Admin"
 
   return (
     <div className="card bg-blur" style={{ width: "18rem" }}>
@@ -16,7 +17,7 @@ export default function Card({ car, images, handleDelete, theme, logged }) {
           <button className={`btn ${theme === 'dark' ? 'btn-light' : 'btn-dark'}`} >Több</button>
         </Link>
         <br />
-        {logged && userId === car.hirdeto ? (
+        {(logged && userId === car.hirdeto) || isAdmin ? (
           <button className="btn btn-" style={{ marginLeft: "10px" }} onClick={function () {
             if (window.confirm("Biztosan törölni szeretnéd?")) {
               handleDelete(car.id)
@@ -24,7 +25,7 @@ export default function Card({ car, images, handleDelete, theme, logged }) {
           }}><i className={`bi bi-trash3 ${theme === 'dark' ? 'icon-light' : 'icon-dark'}`}></i><br /></button>
         ) : null}
 
-        {logged && (userId === car.hirdeto) ? (
+        {(logged && (userId === car.hirdeto)) || isAdmin ? (
           <Link to={"/updatecar/" + car.id}>
             <button className="btn btn-"><i className={`bi bi-pen ${theme === 'dark' ? 'icon-light' : 'icon-dark'}`}></i></button>
           </Link>
