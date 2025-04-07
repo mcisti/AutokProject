@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Ápr 01. 11:14
+-- Létrehozás ideje: 2025. Ápr 07. 14:34
 -- Kiszolgáló verziója: 10.4.20-MariaDB
 -- PHP verzió: 7.3.29
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `autopiac`
 --
+CREATE DATABASE IF NOT EXISTS `autopiac` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `autopiac`;
 
 -- --------------------------------------------------------
 
@@ -52,6 +54,7 @@ CREATE TABLE `aspnetroles` (
 --
 
 INSERT INTO `aspnetroles` (`Id`, `Name`, `NormalizedName`, `ConcurrencyStamp`) VALUES
+('089579c8-1a89-4079-afee-da5d503e0976', 'Admin', 'ADMIN', NULL),
 ('50665d91-fd52-4a45-99a5-42ec611aa2ce', 'Tulaj', 'TULAJ', NULL);
 
 -- --------------------------------------------------------
@@ -91,6 +94,13 @@ CREATE TABLE `aspnetuserroles` (
   `RoleId` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- A tábla adatainak kiíratása `aspnetuserroles`
+--
+
+INSERT INTO `aspnetuserroles` (`UserId`, `RoleId`) VALUES
+('a7b39243-e3e2-48d4-9d9a-5e35666a7b56', '089579c8-1a89-4079-afee-da5d503e0976');
+
 -- --------------------------------------------------------
 
 --
@@ -124,7 +134,8 @@ CREATE TABLE `aspnetusers` (
 INSERT INTO `aspnetusers` (`Id`, `Fullname`, `BirthDate`, `UserName`, `NormalizedUserName`, `Email`, `NormalizedEmail`, `EmailConfirmed`, `PasswordHash`, `SecurityStamp`, `ConcurrencyStamp`, `PhoneNumber`, `PhoneNumberConfirmed`, `TwoFactorEnabled`, `LockoutEnd`, `LockoutEnabled`, `AccessFailedCount`) VALUES
 ('27fa7fb0-4a39-4330-af61-1888de22076e', 'XDDDDDD', '2025-04-02 10:38:58.000000', 'valami', 'VALAMI', 'valami@gmail.com', 'VALAMI@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAEAdU3dAIQMArCuRipO/x9ly+H9WED+58fCFR9aJ/VhXU8/aRadLvkr15VjwfZQWjlg==', 'TODNZTHGQEOKCION2BRQJ65RLM44LQ2P', '318ae2cd-5206-411f-97f1-57fd59757dc6', '06703870023', 0, 0, '2025-04-01 10:35:25', 0, 0),
 ('6ce9701b-565c-438f-b9eb-aed891a2425a', NULL, '2025-04-01 08:19:40.031000', 'levi', 'LEVI', 'string', 'STRING', 0, 'AQAAAAIAAYagAAAAEAAbZHLO4LrT0DcUCStB3JFkRAcT3wBDi7EFXr+ZUT/mJpEpMgkREtPh6hXIXYvLEQ==', 'RZAAOZXTTP3KGPPUSCSKPBJVAR7XTFBV', 'f183fa7d-530c-4872-a85a-6d1b8da632bf', 'string', 0, 0, NULL, 1, 0),
-('9910992c-5638-4f86-b061-1a190fff91a8', NULL, '2025-04-01 08:19:40.031000', 'szbalesz', 'SZBALESZ', 'string', 'STRING', 0, 'AQAAAAIAAYagAAAAECCKO9JrPZijHR0YjGcvxoDdBzI5QpX4kPwO3Jl5JtRrCJE1J7oK7f7fP1smJpdLQg==', 'FIEJOLLFFPUESXFOPJX2QH4P6A3O4OQO', '21884721-769b-4854-a0f2-f1a03889237f', 'string', 0, 0, NULL, 1, 0);
+('9910992c-5638-4f86-b061-1a190fff91a8', NULL, '2025-04-01 08:19:40.031000', 'szbalesz', 'SZBALESZ', 'string', 'STRING', 0, 'AQAAAAIAAYagAAAAECCKO9JrPZijHR0YjGcvxoDdBzI5QpX4kPwO3Jl5JtRrCJE1J7oK7f7fP1smJpdLQg==', 'FIEJOLLFFPUESXFOPJX2QH4P6A3O4OQO', '21884721-769b-4854-a0f2-f1a03889237f', 'string', 0, 0, NULL, 1, 0),
+('a7b39243-e3e2-48d4-9d9a-5e35666a7b56', NULL, '2005-04-01 09:18:38.369000', 'feedadam', 'FEEDADAM', 'kovacsa@kkszki.hu', 'KOVACSA@KKSZKI.HU', 0, 'AQAAAAIAAYagAAAAENsc6xj/+AGeDHHEs4b1l/wVuCbirk/ADFVtLsX6psAHHI3rS9BUea2gBJ50DOeOjg==', 'AAMVJROFSOLFRSZTGSN4ZGTWI5Y7MEKY', 'f235291b-f6bb-4c82-9e2d-776edc9263f8', '06703458742', 0, 0, NULL, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -176,7 +187,10 @@ INSERT INTO `jarmuvek` (`id`, `hirdeto`, `marka`, `tipus`, `evjarat`, `kilometer
 (5, '27fa7fb0-4a39-4330-af61-1888de22076e', 'Audi', 'A4', 2008, 182000, 'Fekete', 'Dízel', '2.00', 143, 'Manuális', '2785000.00', 'Kitűnő', 'Fedélzeti Komputer', '2027-01-17', 'Eladó'),
 (6, '27fa7fb0-4a39-4330-af61-1888de22076e', 'Lamborghini', 'Aventador', 2015, 58000, 'Fekete', 'Benzin', '6.40', 700, 'Automatikus', '99999999.99', 'Kitűnő', 'Automatizált Fedélzet', '2026-02-17', 'Eladó'),
 (7, '27fa7fb0-4a39-4330-af61-1888de22076e', 'Mercedes-benz', 'c250', 1999, 278543, 'fekete', 'dizel', '2.50', 150, 'Automatikus', '1550000.00', 'normál', 'klíma,szervó kormány,elektromos ablak', '2025-03-20', 'Eladó'),
-(8, '27fa7fb0-4a39-4330-af61-1888de22076e', 'Mercedes-benz', 'S600', 1991, 143959, 'Fekete', 'Benzin', '6.00', 408, 'Automatikus', '16450000.00', 'kitőnű', 'Memóriás ülés,klíma,börbelső', '2025-03-20', 'Eladó');
+(8, '27fa7fb0-4a39-4330-af61-1888de22076e', 'Mercedes-benz', 'S600', 1991, 143959, 'Fekete', 'Benzin', '6.00', 408, 'Automatikus', '16450000.00', 'kitőnű', 'Memóriás ülés,klíma,börbelső', '2025-03-20', 'Eladó'),
+(10, 'a7b39243-e3e2-48d4-9d9a-5e35666a7b56', 'Teszt', 'Teszt', 2000, 1000, 'piros', 'Teszt', '1.60', 111, 'automatikus', '3000000.00', 'jó', 'jobb', '2025-04-01', 'jó'),
+(11, 'a7b39243-e3e2-48d4-9d9a-5e35666a7b56', 'Teszt2', 'Teszt2', 1999, 1000, 'piros', 'benzin', '1.60', 100, 'automatikus', '1000000.00', 'tökjó', 'tökjó', '2025-04-22', 'Teszt2'),
+(12, 'a7b39243-e3e2-48d4-9d9a-5e35666a7b56', 'Teszt3', 'Teszt3', 1999, 1000, 'zöld', 'benzin', '1.60', 100, 'automatikus', '1000000.00', 'tökjó', 'tökjó', '2025-04-17', 'Teszt3');
 
 -- --------------------------------------------------------
 
@@ -211,7 +225,10 @@ INSERT INTO `kepek_video` (`id`, `jarmu_id`, `tipus`, `eleresi_ut`) VALUES
 (13, 7, 'kep', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Mercedes_C-Klasse_T-Modell_%28S202%29_Facelift_20090913_front.jpg/1280px-Mercedes_C-Klasse_T-Modell_%28S202%29_Facelift_20090913_front.jpg'),
 (14, 7, 'kep', 'https://www.autonavigator.hu/wp-content/uploads/2022/02/311240_source-scaled.jpg'),
 (15, 8, 'kep', 'https://img.hasznaltautocdn.com/640x480/21253052/4819975.jpg'),
-(16, 8, 'kep', 'https://img.hasznaltautocdn.com/640x480/21253052/4819957.jpg');
+(16, 8, 'kep', 'https://img.hasznaltautocdn.com/640x480/21253052/4819957.jpg'),
+(18, 10, 'kep', 'https://www.autonavigator.hu/wp-content/uploads/2023/02/344461_source-1200x675.jpg'),
+(19, 12, 'kep', 'https://www.autonavigator.hu/wp-content/uploads/2023/02/344461_source-1200x675.jpg'),
+(20, 12, 'kep', 'https://www.autonavigator.hu/wp-content/uploads/2023/02/344460_source-1200x675.jpg');
 
 -- --------------------------------------------------------
 
@@ -369,13 +386,13 @@ ALTER TABLE `aspnetuserclaims`
 -- AUTO_INCREMENT a táblához `jarmuvek`
 --
 ALTER TABLE `jarmuvek`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT a táblához `kepek_video`
 --
 ALTER TABLE `kepek_video`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT a táblához `torteneti_adatok`
